@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +16,7 @@
     <nav class="topbar">
         <div class="brand">
             <span class="brand-icon">⚡</span>
+
             <div>
                 <div class="brand-name">ALERTNET</div>
                 <div class="brand-subtitle">AI FLOOD RESPONSE NETWORK</div>
@@ -27,24 +29,33 @@
         </div>
     </nav>
 
+
     <main class="citizen-container">
 
         <section class="sos-card">
 
             <div class="sos-header">
+
                 <div class="emergency-icon">🚨</div>
 
                 <div>
                     <div class="section-label">EMERGENCY RESPONSE</div>
+
                     <h1>Send an SOS</h1>
+
                     <p>
                         Report a flood emergency and let AlertNet's AI
                         prioritize your situation.
                     </p>
                 </div>
+
             </div>
 
+
             <form id="sosForm">
+
+
+                <!-- NAME -->
 
                 <div class="form-section">
 
@@ -62,22 +73,8 @@
                 </div>
 
 
-                <div class="form-section">
 
-                    <label class="form-label">
-                        Phone Number
-                        <span class="optional">(Optional)</span>
-                    </label>
-
-                    <input
-                        type="tel"
-                        id="phone"
-                        class="form-control alert-input"
-                        placeholder="Enter phone number"
-                    >
-
-                </div>
-
+                <!-- EMERGENCY CATEGORY -->
 
                 <div class="form-section">
 
@@ -89,14 +86,30 @@
                         id="category"
                         class="form-select alert-input"
                     >
-                        <option value="FLOOD">Flood Emergency</option>
-                        <option value="MEDICAL">Medical Emergency</option>
-                        <option value="TRAPPED">Person Trapped</option>
-                        <option value="EVACUATION">Evacuation Required</option>
+
+                        <option value="FLOOD">
+                            Flood Emergency
+                        </option>
+
+                        <option value="MEDICAL">
+                            Medical Emergency
+                        </option>
+
+                        <option value="TRAPPED">
+                            Person Trapped
+                        </option>
+
+                        <option value="EVACUATION">
+                            Evacuation Required
+                        </option>
+
                     </select>
 
                 </div>
 
+
+
+                <!-- DESCRIPTION -->
 
                 <div class="form-section">
 
@@ -113,12 +126,17 @@
                     ></textarea>
 
                     <div class="input-hint">
+
                         💡 Include important details such as trapped people,
                         water level, children, elderly people or medical needs.
+
                     </div>
 
                 </div>
 
+
+
+                <!-- LOCATION -->
 
                 <div class="location-panel">
 
@@ -126,10 +144,14 @@
                         📍 Emergency Location
                     </div>
 
+
                     <div class="location-grid">
 
                         <div>
-                            <label>Latitude</label>
+
+                            <label>
+                                Latitude
+                            </label>
 
                             <input
                                 type="number"
@@ -139,10 +161,15 @@
                                 value="17.3850"
                                 required
                             >
+
                         </div>
 
+
                         <div>
-                            <label>Longitude</label>
+
+                            <label>
+                                Longitude
+                            </label>
 
                             <input
                                 type="number"
@@ -152,9 +179,11 @@
                                 value="78.4867"
                                 required
                             >
+
                         </div>
 
                     </div>
+
 
                     <button
                         type="button"
@@ -167,25 +196,46 @@
                 </div>
 
 
+
+                <!-- SOS BUTTON -->
+
                 <button
                     type="submit"
                     class="sos-button"
                 >
+
                     <span>🚨</span>
+
                     SEND EMERGENCY SOS
+
                 </button>
 
             </form>
 
 
-            <div id="result" class="result-panel hidden"></div>
 
+            <!-- RESULT -->
+
+            <div
+                id="result"
+                class="result-panel hidden"
+            ></div>
+
+
+
+            <!-- DEMO SAFETY NOTICE -->
 
             <div class="safety-note">
-                <strong>AlertNet Safety Network</strong>
+
+                <strong>⚠️ ALERTNET DEMO PROJECT</strong>
+
                 <br>
-                Your report will be analyzed by the AI triage system
-                and forwarded to the emergency command center.
+
+                This is a student-built flood-response prototype.
+                Please do not enter real personal or sensitive information.
+                Location is used only to demonstrate incident mapping and
+                emergency-response coordination.
+
             </div>
 
         </section>
@@ -193,16 +243,28 @@
     </main>
 
 
+
     <script>
+
+
+        // ==============================
+        // GET USER LOCATION
+        // ==============================
 
         function getLocation() {
 
             if (!navigator.geolocation) {
-                alert("Location services are not supported by this browser.");
+
+                alert(
+                    "Location services are not supported by this browser."
+                );
+
                 return;
             }
 
+
             navigator.geolocation.getCurrentPosition(
+
                 function(position) {
 
                     document.getElementById("latitude").value =
@@ -213,129 +275,235 @@
 
                 },
 
+
                 function() {
-                    alert("Unable to get your location. You can enter it manually.");
+
+                    alert(
+                        "Unable to get your location. You can enter it manually."
+                    );
+
                 }
+
             );
+
         }
 
 
-        document.getElementById("sosForm").addEventListener("submit", async function(event) {
 
-            event.preventDefault();
+        // ==============================
+        // SUBMIT SOS
+        // ==============================
 
-            const description =
-                document.getElementById("description").value.trim();
+        document
+            .getElementById("sosForm")
+            .addEventListener("submit", async function(event) {
 
-            if (!description) {
-                alert("Please describe the emergency.");
-                return;
-            }
-
-            const data = {
-
-                name: document.getElementById("name").value || "Anonymous",
-
-                phone: document.getElementById("phone").value || "",
-
-                description: description,
-
-                category: document.getElementById("category").value,
-
-                latitude: parseFloat(
-                    document.getElementById("latitude").value
-                ),
-
-                longitude: parseFloat(
-                    document.getElementById("longitude").value
-                )
-
-            };
+                event.preventDefault();
 
 
-            const button = document.querySelector(".sos-button");
-
-            button.disabled = true;
-            button.innerHTML = "⏳ SUBMITTING SOS...";
-
-
-            try {
-
-                const response = await fetch("/api/sos", {
-
-                    method: "POST",
-
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-
-                    body: JSON.stringify(data)
-
-                });
+                const description =
+                    document
+                        .getElementById("description")
+                        .value
+                        .trim();
 
 
-                const result = await response.json();
+                if (!description) {
 
+                    alert(
+                        "Please describe the emergency."
+                    );
 
-                if (result.success) {
-
-                    document.getElementById("result").classList.remove("hidden");
-
-                    document.getElementById("result").innerHTML = `
-
-                        <div class="success-title">
-                            ✓ SOS RECEIVED
-                        </div>
-
-                        <div class="tracking-box">
-                            Tracking ID
-                            <strong>${result.tracking_id}</strong>
-                        </div>
-
-                        <div>
-                            AI Severity:
-                            <strong>${result.severity || "PROCESSING"}</strong>
-                        </div>
-
-                        <div>
-                            Status:
-                            <strong>${result.status || "RECEIVED"}</strong>
-                        </div>
-
-                        <a
-                            href="/tracking?id=${result.tracking_id}"
-                            class="track-button"
-                        >
-                            TRACK EMERGENCY
-                        </a>
-
-                    `;
-
-                    document.getElementById("sosForm").reset();
-
-                } else {
-
-                    alert(result.error || "Unable to submit SOS.");
+                    return;
 
                 }
 
-            } catch (error) {
-
-                console.error(error);
-
-                alert(
-                    "Unable to connect to AlertNet. Please check that the server is running."
-                );
-
-            }
 
 
-            button.disabled = false;
-            button.innerHTML = "🚨 SEND EMERGENCY SOS";
+                const data = {
 
-        });
+                    name:
+                        document
+                            .getElementById("name")
+                            .value
+                            .trim()
+                        || "Anonymous",
+
+
+                    description:
+                        description,
+
+
+                    category:
+                        document
+                            .getElementById("category")
+                            .value,
+
+
+                    latitude:
+                        parseFloat(
+                            document
+                                .getElementById("latitude")
+                                .value
+                        ),
+
+
+                    longitude:
+                        parseFloat(
+                            document
+                                .getElementById("longitude")
+                                .value
+                        )
+
+                };
+
+
+
+                const button =
+                    document.querySelector(".sos-button");
+
+
+                button.disabled = true;
+
+                button.innerHTML =
+                    "⏳ SUBMITTING SOS...";
+
+
+
+                try {
+
+
+                    const response =
+                        await fetch(
+                            "/api/sos",
+                            {
+
+                                method: "POST",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+
+                                body:
+                                    JSON.stringify(data)
+
+                            }
+                        );
+
+
+
+                    const result =
+                        await response.json();
+
+
+
+                    if (result.success) {
+
+
+                        document
+                            .getElementById("result")
+                            .classList
+                            .remove("hidden");
+
+
+
+                        document
+                            .getElementById("result")
+                            .innerHTML = `
+
+                                <div class="success-title">
+                                    ✓ SOS RECEIVED
+                                </div>
+
+
+                                <div class="tracking-box">
+
+                                    Tracking ID
+
+                                    <strong>
+                                        ${result.tracking_id}
+                                    </strong>
+
+                                </div>
+
+
+                                <div>
+
+                                    AI Severity:
+
+                                    <strong>
+                                        ${result.severity || "PROCESSING"}
+                                    </strong>
+
+                                </div>
+
+
+                                <div>
+
+                                    Status:
+
+                                    <strong>
+                                        ${result.status || "RECEIVED"}
+                                    </strong>
+
+                                </div>
+
+
+                                <a
+                                    href="/tracking?id=${result.tracking_id}"
+                                    class="track-button"
+                                >
+                                    TRACK EMERGENCY
+                                </a>
+
+                            `;
+
+
+
+                        document
+                            .getElementById("sosForm")
+                            .reset();
+
+                    }
+
+
+                    else {
+
+                        alert(
+                            result.error ||
+                            "Unable to submit SOS."
+                        );
+
+                    }
+
+
+                }
+
+
+                catch (error) {
+
+
+                    console.error(error);
+
+
+                    alert(
+                        "Unable to connect to AlertNet. Please check that the server is running."
+                    );
+
+                }
+
+
+
+                button.disabled = false;
+
+                button.innerHTML =
+                    "🚨 SEND EMERGENCY SOS";
+
+            });
 
     </script>
 
 </body>
 </html>
+```
