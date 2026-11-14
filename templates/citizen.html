@@ -1,21 +1,29 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>AlertNet | Student Flood Response Demo</title>
+
 
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet"
     >
 
+
     <link
         rel="stylesheet"
         href="{{ url_for('static', filename='css/style.css') }}"
     >
+
 </head>
 
 
@@ -66,7 +74,7 @@
 
 
             <!-- ==============================
-                 DEMO BANNER
+                 STUDENT DEMO BANNER
             =============================== -->
 
             <div
@@ -87,15 +95,20 @@
 
                 <br>
 
-                This is an educational prototype demonstrating
-                AI-based flood incident prioritization and
-                rescue coordination.
+                This is an educational software prototype
+                demonstrating AI-based flood incident
+                prioritization, tracking and response coordination.
 
                 <br>
 
                 <strong>
-                    ⚠️ Not an official emergency service.
+                    ⚠️ NOT AN OFFICIAL EMERGENCY SERVICE.
                 </strong>
+
+                <br>
+
+                This page is for demonstration purposes only.
+                Do not submit real emergency or personal information.
 
             </div>
 
@@ -120,14 +133,14 @@
 
 
                     <h1>
-                        Report a Flood Incident
+                        Submit a Demo Incident
                     </h1>
 
 
                     <p>
-                        Submit a simulated flood incident and
-                        let AlertNet's AI demonstrate how
-                        emergency situations can be prioritized.
+                        Create a fictional flood scenario and
+                        let AlertNet demonstrate how AI can
+                        prioritize and track an incident.
                     </p>
 
                 </div>
@@ -137,38 +150,20 @@
 
 
             <!-- ==============================
-                 SOS FORM
+                 DEMO FORM
             =============================== -->
 
             <form id="sosForm">
 
 
-                <!-- NAME -->
+                <!-- ==============================
+                     CATEGORY
+                =============================== -->
 
                 <div class="form-section">
 
                     <label class="form-label">
-                        Your Name
-                    </label>
-
-
-                    <input
-                        type="text"
-                        id="name"
-                        class="form-control alert-input"
-                        placeholder="Enter a demo name or leave blank"
-                    >
-
-                </div>
-
-
-
-                <!-- CATEGORY -->
-
-                <div class="form-section">
-
-                    <label class="form-label">
-                        Incident Category
+                        Incident Scenario
                     </label>
 
 
@@ -178,19 +173,19 @@
                     >
 
                         <option value="FLOOD">
-                            Flood Emergency
+                            Flood Scenario
                         </option>
 
                         <option value="MEDICAL">
-                            Medical Emergency
+                            Medical Scenario
                         </option>
 
                         <option value="TRAPPED">
-                            Person Trapped
+                            Trapped Person Scenario
                         </option>
 
                         <option value="EVACUATION">
-                            Evacuation Required
+                            Evacuation Scenario
                         </option>
 
                     </select>
@@ -199,12 +194,14 @@
 
 
 
-                <!-- DESCRIPTION -->
+                <!-- ==============================
+                     DESCRIPTION
+                =============================== -->
 
                 <div class="form-section">
 
                     <label class="form-label">
-                        Describe the Incident
+                        Describe the Demo Scenario
                     </label>
 
 
@@ -212,16 +209,16 @@
                         id="description"
                         class="form-control alert-input"
                         rows="5"
-                        placeholder="Example: Water has entered the house and two people are trapped upstairs..."
+                        placeholder="Example: DEMO — simulated flood water has entered a house and two fictional people are trapped upstairs..."
                         required
                     ></textarea>
 
 
                     <div class="input-hint">
 
-                        💡 For this demo, use fictional information.
-                        You can describe trapped people, water level,
-                        medical needs or evacuation requirements.
+                        💡 Use fictional information only.
+                        Do not enter your real name, phone number,
+                        address, medical information or real emergency details.
 
                     </div>
 
@@ -229,13 +226,30 @@
 
 
 
-                <!-- LOCATION -->
+                <!-- ==============================
+                     DEMO LOCATION
+                =============================== -->
 
                 <div class="location-panel">
 
 
                     <div class="location-title">
-                        📍 Incident Location
+                        📍 Demo Incident Location
+                    </div>
+
+
+                    <div
+                        style="
+                            font-size: 13px;
+                            margin-bottom: 12px;
+                            opacity: 0.85;
+                        "
+                    >
+
+                        These coordinates are used only to demonstrate
+                        incident mapping. They are not intended to
+                        represent a real emergency location.
+
                     </div>
 
 
@@ -245,7 +259,7 @@
                         <div>
 
                             <label>
-                                Latitude
+                                Demo Latitude
                             </label>
 
 
@@ -265,7 +279,7 @@
                         <div>
 
                             <label>
-                                Longitude
+                                Demo Longitude
                             </label>
 
 
@@ -282,22 +296,13 @@
 
                     </div>
 
-
-
-                    <button
-                        type="button"
-                        class="location-btn"
-                        onclick="getLocation()"
-                    >
-                        📍 Use My Location
-                    </button>
-
-
                 </div>
 
 
 
-                <!-- SUBMIT -->
+                <!-- ==============================
+                     SUBMIT
+                =============================== -->
 
                 <button
                     type="submit"
@@ -343,24 +348,34 @@
                 <br>
 
 
-                AlertNet is a student-built prototype created
-                to demonstrate AI-based flood incident analysis,
-                prioritization, mapping and response coordination.
+                AlertNet is a student-built educational prototype
+                created to demonstrate AI-based flood incident
+                analysis, prioritization, mapping, tracking and
+                response coordination.
 
 
                 <br>
 
 
-                Please do not enter real personal, medical or
-                emergency information.
+                This demonstration does not collect or require
+                real personal, medical or emergency information.
 
 
                 <br>
 
 
                 <strong>
-                    AlertNet is not connected to emergency
-                    services and does not dispatch real rescue teams.
+                    AlertNet is not connected to police, ambulance,
+                    disaster-management authorities or other
+                    emergency services.
+                </strong>
+
+
+                <br>
+
+
+                <strong>
+                    No real rescue team is dispatched through this demo.
                 </strong>
 
 
@@ -374,60 +389,6 @@
 
 
     <script>
-
-
-        // =========================================
-        // GET USER LOCATION
-        // =========================================
-
-        function getLocation() {
-
-
-            if (!navigator.geolocation) {
-
-
-                alert(
-                    "Location services are not supported by this browser."
-                );
-
-
-                return;
-
-            }
-
-
-
-            navigator.geolocation.getCurrentPosition(
-
-
-                function(position) {
-
-
-                    document.getElementById("latitude").value =
-                        position.coords.latitude;
-
-
-                    document.getElementById("longitude").value =
-                        position.coords.longitude;
-
-
-                },
-
-
-                function() {
-
-
-                    alert(
-                        "Unable to get your location. You can enter a demo location manually."
-                    );
-
-
-                }
-
-            );
-
-        }
-
 
 
         // =========================================
@@ -457,7 +418,7 @@
 
 
                         alert(
-                            "Please describe the demo incident."
+                            "Please describe the demo scenario."
                         );
 
 
@@ -470,12 +431,8 @@
                     const data = {
 
 
-                        name:
-                            document
-                                .getElementById("name")
-                                .value
-                                .trim()
-                            || "Demo User",
+                        // No personal name is collected.
+                        name: "Demo User",
 
 
 
@@ -577,7 +534,7 @@
 
                                     <div class="tracking-box">
 
-                                        Tracking ID
+                                        Demo Tracking ID
 
                                         <strong>
                                             ${result.tracking_id}
@@ -672,5 +629,5 @@
 
 
 </body>
+
 </html>
-```
